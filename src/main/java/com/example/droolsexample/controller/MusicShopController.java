@@ -1,5 +1,6 @@
 package com.example.droolsexample.controller;
 
+import com.example.droolsexample.model.Instrument;
 import com.example.droolsexample.model.Product;
 import com.example.droolsexample.service.MusicShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,16 @@ public class MusicShopController {
         product.setType(type);
         musicShopService.getProductDiscount(product);
         return product;
+
+    }
+
+    @GetMapping("details")
+    public Instrument getInstrumentDetails(@RequestParam(required = true) String type){
+
+        Instrument instrument = new Instrument();
+        instrument.setType(type);
+        musicShopService.getInstrumentDetails(instrument);
+        return instrument;
 
     }
 }

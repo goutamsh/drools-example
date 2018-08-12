@@ -1,5 +1,6 @@
 package com.example.droolsexample.service;
 
+import com.example.droolsexample.model.Instrument;
 import com.example.droolsexample.model.Product;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -24,5 +25,13 @@ public class MusicShopService {
         kieSession.fireAllRules();
         kieSession.dispose();
         return product;
+    }
+
+    public Instrument getInstrumentDetails(Instrument instrument) {
+        KieSession kieSession = kieContainer.newKieSession("ProductSession");
+        kieSession.insert(instrument);
+        kieSession.fireAllRules();
+        kieSession.dispose();
+        return instrument;
     }
 }
